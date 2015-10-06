@@ -19,8 +19,8 @@ public class Work extends Quantity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void compute(Force f, Distance s, double cos) {
-		value = f.getValue() * s.getValue() * cos;
+	public void compute(Force f, Distance s, double degree) {
+		value = f.getValue() * s.getValue() * Math.cos(degree);
 	}
 
 }

@@ -21,7 +21,10 @@ public class Mass extends Quantity {
 
 	public void compute(Force f, Acceleration a) {
 		value = f.getValue() / a.getValue();
-
+	}
+	
+	public void compute(Pulse p, Velocity v) {
+		value = p.getValue() / v.getValue();
 	}
 
 }

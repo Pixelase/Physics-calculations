@@ -30,4 +30,8 @@ public class Distance extends Quantity {
 	public void compute(Distance x0, Velocity v0, Time t, Acceleration a) {
 		value = x0.getValue() + v0.getValue() * t.getValue() + (a.getValue() * Math.pow(t.getValue(), 2))/2;
 	}
+	
+	public void compute(Work a, Force f, double degree) {
+		value = a.getValue() / f.getValue() * Math.cos(degree);
+	}
 }
