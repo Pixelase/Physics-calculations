@@ -4,7 +4,7 @@ public abstract class Quantity {
 	protected double value;
 
 	public Quantity() {
-		value = 0;
+		value = 0.0;
 	}
 
 	public Quantity(double value) {

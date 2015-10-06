@@ -3,25 +3,28 @@ package physics.library.core.quantities.impl;
 import physics.library.core.quantities.Quantity;
 import physics.library.core.quantities.Unit;
 
-public class Mass extends Quantity {
+public class Power extends Quantity {
 
-	public Mass() {
+	public Power() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Mass(double value) {
+	public Power(double value) {
 		super(value);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Mass(double value, Unit unit) {
+	public Power(double value, Unit unit) {
 		super(value, unit);
 		// TODO Auto-generated constructor stub
 	}
-
-	public void compute(Force f, Acceleration a) {
-		value = f.getValue() / a.getValue();
-
+	
+	public void compute(Work a, Time t) {
+		value = a.getValue() / t.getValue();
+	}
+	
+	public void compute(Force f, Velocity v) {
+		value = f.getValue() * v.getValue();
 	}
 
 }
