@@ -1,7 +1,7 @@
-package physics.library.core.quantities.impl;
+package physics.library.core.quantity.impl;
 
-import physics.library.core.quantities.Quantity;
-import physics.library.core.quantities.Unit;
+import physics.library.core.quantity.Quantity;
+import physics.library.core.quantity.unit.Unit;
 
 public class Force extends Quantity {
 

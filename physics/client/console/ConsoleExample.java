@@ -1,9 +1,9 @@
 package physics.client.console;
 
-import physics.library.core.quantities.Modifiers;
-import physics.library.core.quantities.TimeModifiers;
-import physics.library.core.quantities.Unit;
-import physics.library.core.quantities.impl.*;
+import physics.library.core.quantity.impl.*;
+import physics.library.core.quantity.unit.Unit;
+import physics.library.core.quantity.unit.prefix.BasePrefix;
+import physics.library.core.quantity.unit.prefix.TimePrefix;
 
 public class ConsoleExample {
 
@@ -11,38 +11,49 @@ public class ConsoleExample {
 
         // Объявление и инициализация всех переменных для исходных физических
         // величин
-        Acceleration acceleration = new Acceleration(5);
-        Distance distance = new Distance(1000);
-        Force force = new Force(25);
-        Power power = new Power(10);
-        Pulse pulse = new Pulse(15);
-        Radius radius = new Radius(3);
-        Work work = new Work(300);
+        final Acceleration acceleration = new Acceleration(5);
+        final Distance distance = new Distance(1000);
+        final Force force = new Force(25);
+        final Power power = new Power(10);
+        final Pulse pulse = new Pulse(15);
+        final Radius radius = new Radius(3);
+        final Work work = new Work(300);
 
 		/*
          * Можно инициализировать физические величины используя различные
 		 * множители. Также множители можно сочетать, для сложных физических
 		 * величин. Значение будет автоматически приведено к формату СИ.
 		 */
-        Mass mass = new Mass(5, new Unit(Modifiers.KILO));
-        Time time = new Time(2, new Unit(TimeModifiers.HOURS));
-        Velocity velocity = new Velocity(50, new Unit(Modifiers.KILO
-                / TimeModifiers.HOURS));
+        final Unit massUnit = Unit.newBuilder().setUpperPrefixes(BasePrefix.KILO).build();
+        final Mass mass = new Mass(5, massUnit);
+
+        final Unit velocityUnit = Unit.newBuilder()
+                .setUpperPrefixes(BasePrefix.KILO)
+                .setLowerPrefixes(TimePrefix.HOURS)
+                .build();
+        final Velocity velocity = new Velocity(50, velocityUnit);
+
+        /*
+         * Возможен и такой вариант, то есть задание модификатора вручную в виде числа;
+         */
+        final Time time = new Time(2, new Unit(TimePrefix.HOURS.getValue()));
+
+
 
 		/* Объявление всех результирующих величин */
-        Acceleration resultAcceleration = new Acceleration();
-        Distance resultDistance = new Distance();
-        Force resultForce = new Force();
-        Power resultPower = new Power();
-        Pulse resultPulse = new Pulse();
-        Radius resultRadius = new Radius();
-        Work resultWork = new Work();
-        Mass resultMass = new Mass();
-        Time resultTime = new Time();
-        Velocity resultVelocity = new Velocity();
+        final Acceleration resultAcceleration = new Acceleration();
+        final Distance resultDistance = new Distance();
+        final Force resultForce = new Force();
+        final Power resultPower = new Power();
+        final Pulse resultPulse = new Pulse();
+        final Radius resultRadius = new Radius();
+        final Work resultWork = new Work();
+        final Mass resultMass = new Mass();
+        final Time resultTime = new Time();
+        final Velocity resultVelocity = new Velocity();
 
 		/*
-		 * Пример использования некоторых встроенных методов для вычисления
+         * Пример использования некоторых встроенных методов для вычисления
 		 * значения физических величин.
 		 */
 
@@ -83,7 +94,6 @@ public class ConsoleExample {
 
         // Скорость
         resultVelocity.compute(acceleration, radius);
-        ;
         System.out.println("Resulting velocity value : "
                 + resultVelocity.getValue());
 
